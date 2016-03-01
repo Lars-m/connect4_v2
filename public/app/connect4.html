@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app='connect4'>
+
+<head>
+  <link rel="stylesheet" type="text/css" href="connect4.css">
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  <style>
+    .err {
+      color: red;
+      font-size: smaller;
+      margin-left: 0.3em;
+    }
+  </style>
+</head>
+
+<body ng-controller="connect4">
+
+<div class="container" style="margin: 4em;">
+  <div id="gameContainer">
+    <div>
+      <div class="column" ng-repeat="column in board" ng-click="placeToken($index)">
+        <div ng-style="setStyling(val)" class="circle" ng-repeat="val in column track by $index">&nbsp</div>
+      </div>
+    </div>
+  </div>
+  <br/>
+
+  <div class="input-group" ng-form name="f">
+    <button id="start_Game" ng-click="newGame()"  ng-disabled="f.$invalid" class="btn btn-default">New Game</button>
+    <input ng-model="username" required ng-minlength="2" style="margin-left: 1em;margin-right: 1em;" name="user" placeholder="Enter your user name">
+    <span class="err" style="min-width: 1em;" ng-show="f.user.$error.required">* &nbsp;</span>
+    <span class="err" ng-show="f.user.$error.minlength">Min-length is 2</span>
+    <span ng-show="f.$valid">Player Turn : {{turn}}</span>
+  </div>
+
+  <div style="margin-top: 0.5em;">
+    <buttone ng-click="getOpponent()" ng-disabled="!gameRegistered" ng-hide="gameStatus.opponent===2" class="btn btn-default">Check for opponent</buttone>
+  </div>
+  <div style="margin-top: 0.5em;" ng-hide="gameStatus.opponent===1" >
+    <button ng-click="initComputerGame()" ng-disabled="!gameRegistered" class="btn btn-default">Play against Server</button>
+  </div>
+
+  <p> You: {{username}}  </p>
+  <p> You: {{yourColor}} </p>
+
+  <p> Opponent: {{opponent}} </p>
+
+  <h1 ng-show="winner">We have a winner: {{winner}}</h1>
+
+  <p style="color:red;">{{error}}</p>
+</div>
+</body>
+<script src="connect4.js"></script>
+</body>
+
+</html>
