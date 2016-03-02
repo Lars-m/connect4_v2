@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<project version="4">
-  <component name="JavaScriptLibraryMappings">
-    <file url="file://$PROJECT_DIR$" libraries="{connect node_modules}" />
-    <file url="file://$PROJECT_DIR$/public/app/connect4.js" libraries="{angular, angularjs-DefinitelyTyped}" />
-    <file url="file://$PROJECT_DIR$/routes/gameAPI.js" libraries="{Node.js Core}" />
-    <file url="file://$PROJECT_DIR$/routes/index.js" libraries="{Node.js Core}" />
-  </component>
-</project>
